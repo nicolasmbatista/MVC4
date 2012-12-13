@@ -8,27 +8,23 @@ namespace MovieMVC.Controllers
 {
     public class HelloWorldController : Controller
     {
-        //
-        // GET: /HelloWorld/
 
-        public class HelloWorldController : Controller
+        // 
+        // GET: /HelloWorld/ 
+
+        public ActionResult Index()
         {
-            // 
-            // GET: /HelloWorld/ 
+            return View();
+        }
 
-            public ActionResult Index()
-            {
-                return View();
-            }
+        // 
+        // GET: /HelloWorld/Welcome/ 
 
-            // 
-            // GET: /HelloWorld/Welcome/ 
-
-            public string Welcome(string name, int numTimes = 1)
-            {
-                return HttpUtility.HtmlEncode("Hello " + name + ", NumTimes is: " + numTimes);
-            }
-        } 
+        public string Welcome(string name, int numTimes = 1)
+        {
+            return HttpUtility.HtmlEncode("Hello " + name + ", NumTimes is: " + numTimes);
+        }
+        
 
     }
 }
