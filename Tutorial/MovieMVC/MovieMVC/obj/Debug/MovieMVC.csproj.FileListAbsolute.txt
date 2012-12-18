@@ -1,4 +1,3 @@
-C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.csprojResolveAssemblyReference.cache
 C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\bin\MovieMVC.dll
 C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\bin\MovieMVC.pdb
 C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\bin\Antlr3.Runtime.dll
@@ -47,3 +46,4 @@ C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\bin\DotNe
 C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.dll
 C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.pdb
+C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.csprojResolveAssemblyReference.cache
