@@ -2,19 +2,48 @@
 using System.Data;
 using System.Web.Mvc;
 using System.Linq;
+using System;
+using System.Collections.Generic;
 
 namespace MovieMVC.Controllers
 {
     public class MoviesController : Controller
     {
-        private MovieDBContext db = new MovieDBContext();
+        private MovieDBContext _db = new MovieDBContext();
 
         //
         // GET: /Movies/
 
         public ActionResult Index()
         {
-            return View(db.Movies.ToList());
+            return View(_db.Movies.ToList());
+        }
+
+        public ActionResult SearchIndex(string movieGenre, string searchString)
+        {
+            var GenreLst = new List<string>();
+
+            var GenreQry = from d in _db.Movies
+                           orderby d.Genre
+                           select d.Genre;
+            GenreLst.AddRange(GenreQry.Distinct());
+            ViewBag.movieGenre = new SelectList(GenreLst);
+
+            var movies = from m in _db.Movies
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Title.Contains(searchString));
+            }
+
+            if (string.IsNullOrEmpty(movieGenre))
+                return View(movies);
+            else
+            {
+                return View(movies.Where(x => x.Genre == movieGenre));
+            }
+
         }
 
         //
@@ -22,7 +51,7 @@ namespace MovieMVC.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Movie movie = db.Movies.Find(id);
+            Movie movie = _db.Movies.Find(id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -46,8 +75,8 @@ namespace MovieMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Movies.Add(movie);
-                db.SaveChanges();
+                _db.Movies.Add(movie);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -59,7 +88,7 @@ namespace MovieMVC.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Movie movie = db.Movies.Find(id);
+            Movie movie = _db.Movies.Find(id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -75,8 +104,8 @@ namespace MovieMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(movie).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(movie).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(movie);
@@ -87,7 +116,7 @@ namespace MovieMVC.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Movie movie = db.Movies.Find(id);
+            Movie movie = _db.Movies.Find(id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -101,15 +130,15 @@ namespace MovieMVC.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Movie movie = db.Movies.Find(id);
-            db.Movies.Remove(movie);
-            db.SaveChanges();
+            Movie movie = _db.Movies.Find(id);
+            _db.Movies.Remove(movie);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _db.Dispose();
             base.Dispose(disposing);
         }
     }
