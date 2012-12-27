@@ -47,3 +47,6 @@ C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\bin\DotNe
 C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.dll
 C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.pdb
 C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.csprojResolveAssemblyReference.cache
+C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.Migrations.Initial.resources
+C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.csproj.GenerateResource.Cache
+C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.Migrations.AddRatingMig.resources
