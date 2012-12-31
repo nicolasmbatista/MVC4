@@ -177,6 +177,10 @@
     <Compile Include="Migrations\201212271213456_AddRatingMig.Designer.cs">
       <DependentUpon>201212271213456_AddRatingMig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201212271539163_addMigrationDataAnnotations.cs" />
+    <Compile Include="Migrations\201212271539163_addMigrationDataAnnotations.Designer.cs">
+      <DependentUpon>201212271539163_addMigrationDataAnnotations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -314,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201212271213456_AddRatingMig.resx">
       <DependentUpon>201212271213456_AddRatingMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201212271539163_addMigrationDataAnnotations.resx">
+      <DependentUpon>201212271539163_addMigrationDataAnnotations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

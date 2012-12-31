@@ -50,3 +50,4 @@ C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug
 C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.Migrations.Initial.resources
 C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.csproj.GenerateResource.Cache
 C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.Migrations.AddRatingMig.resources
+C:\Users\nbatista\Desktop\Capacitation\MVC4\Tutorial\MovieMVC\MovieMVC\obj\Debug\MovieMVC.Migrations.addMigrationDataAnnotations.resources
