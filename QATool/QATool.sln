@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QATool", "QATool\QATool.csproj", "{BB612129-D3D7-48BE-9BB8-9BE25068E25D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QATool.Tests", "QATool.Tests\QATool.Tests.csproj", "{7D647AA5-5F74-481E-B734-31DF3E7D6294}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB612129-D3D7-48BE-9BB8-9BE25068E25D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB612129-D3D7-48BE-9BB8-9BE25068E25D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB612129-D3D7-48BE-9BB8-9BE25068E25D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB612129-D3D7-48BE-9BB8-9BE25068E25D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D647AA5-5F74-481E-B734-31DF3E7D6294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D647AA5-5F74-481E-B734-31DF3E7D6294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D647AA5-5F74-481E-B734-31DF3E7D6294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D647AA5-5F74-481E-B734-31DF3E7D6294}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
