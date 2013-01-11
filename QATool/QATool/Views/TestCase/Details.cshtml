@@ -1,0 +1,57 @@
+﻿@model QATool.Models.TestCase
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TestCase</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Scenario)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Scenario)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Feature)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Feature)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Result)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Result)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BugId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BugId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Comments)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Comments)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Environment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Environment)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TestCaseId }) |
+    @Html.ActionLink("Go Back","List","Project",new {projectId = ViewBag.projectId} ,null)
+</p>

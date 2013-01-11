@@ -1,0 +1,41 @@
+﻿@model IEnumerable<QATool.Models.Project>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th>
+            Project
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            <p>@Html.ActionLink("Test Cases", "List",  new {projectId = item.ProjectId})</p>
+            <p>@Html.ActionLink("Edit", "Edit", new { id=item.ProjectId })</p>
+            <p>@Html.ActionLink("Delete", "Delete", new { id=item.ProjectId })</p>
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>

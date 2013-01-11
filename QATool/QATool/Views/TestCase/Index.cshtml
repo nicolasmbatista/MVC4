@@ -1,0 +1,65 @@
+﻿@model IEnumerable<QATool.Models.TestCase>
+
+@{
+    ViewBag.Title = "Project Test Cases";
+}
+
+<h2>Nombre de proyecto aca - Test Cases</h2>
+
+<p>
+    @Html.ActionLink("Add Test", "Create", new { projectId = ViewBag.projectId})
+</p>
+<table>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Scenario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Feature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Result)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BugId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestCaseId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Scenario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Feature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Result)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BugId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td>
+            <p>@Html.ActionLink("Details", "Details", new { id=item.TestCaseId })</p>
+            <p>@Html.ActionLink("Edit", "Edit", new { id=item.TestCaseId })</p>            
+            <p>@Html.ActionLink("Delete", "Delete", new { id=item.TestCaseId })</p>
+        </td>
+    </tr>
+}
+
+</table>

@@ -23,6 +23,9 @@ namespace MovieMVC.Controllers
         {
             var GenreLst = new List<string>();
 
+            // Huevo solution
+            // Movie result = _db.Movies.Where(x => x.Title == "oeoe").FirstOrDefault();                            
+
             var GenreQry = from d in _db.Movies
                            orderby d.Genre
                            select d.Genre;
