@@ -26,7 +26,8 @@ namespace QATool.Models
         [Required]
         public virtual string Result { get; set; }
         
-        public virtual int BugId { get; set; }
+        //Declaring this int with a ? makes it so it can be null, cause not every test case has a bug!
+        public virtual int? BugId { get; set; }
         public virtual string Comments { get; set; }
         public virtual string Environment { get; set; }
         public virtual List<Step> Steps { get; set; }

@@ -90,7 +90,7 @@ namespace QATool.Controllers
             {
                 _db.Entry(testcase).State = EntityState.Modified;
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List", "Project", new { projectId = testcase.ProjectId });
             }
             return View(testcase);
         }
@@ -98,9 +98,8 @@ namespace QATool.Controllers
         //
         // GET: /TestCase/Delete/5
 
-        public ActionResult Delete(int id, int projectId)
+        public ActionResult Delete(int id)
         {
-            ViewBag.projectId = projectId;
             TestCase testcase = _db.TestCases.Find(id);
             if (testcase == null)
             {
@@ -118,7 +117,7 @@ namespace QATool.Controllers
             TestCase testcase = _db.TestCases.Find(id);
             _db.TestCases.Remove(testcase);
             _db.SaveChanges();
-            return RedirectToAction("List", "Project", new { projectId = ViewBag.projectId });
+            return RedirectToAction("List", "Project", new { projectId = testcase.ProjectId });
         }
 
         protected override void Dispose(bool disposing)
@@ -126,5 +125,6 @@ namespace QATool.Controllers
             _db.Dispose();
             base.Dispose(disposing);
         }
+
     }
 }

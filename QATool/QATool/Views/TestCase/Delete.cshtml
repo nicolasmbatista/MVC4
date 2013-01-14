@@ -11,13 +11,6 @@
     <legend>TestCase</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProjectId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ProjectId)
-    </div>
-
-    <div class="display-label">
          @Html.DisplayNameFor(model => model.Scenario)
     </div>
     <div class="display-field">
@@ -62,6 +55,6 @@
 @using (Html.BeginForm()) {
     <p>
         <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Go Back","List","Project",new {projectId = ViewBag.projectId} ,null)
+        @Html.ActionLink("Go Back", "List", "Project", new { projectId = Model.ProjectId }, null)
     </p>
 }

@@ -10,6 +10,13 @@
     <legend>TestCase</legend>
 
     <div class="display-label">
+         @Html.DisplayNameFor(model => model.Feature)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Feature)
+    </div>
+
+    <div class="display-label">
          @Html.DisplayNameFor(model => model.Scenario)
     </div>
     <div class="display-field">
@@ -17,11 +24,48 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Feature)
+         @Html.DisplayNameFor(model => model.Environment)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Feature)
+        @Html.DisplayFor(model => model.Environment)
     </div>
+
+    <div class="display-label">
+         Steps:
+    </div>
+
+    <table>
+        <tr>
+            <th>
+                Step
+            </th>
+            <th>
+                Action
+            </th>
+            <th>
+                Expected Result
+            </th>
+        </tr>
+
+        @{ViewBag.i = 1;}
+        @foreach (var item in Model.Steps)
+        {
+            <tr>
+                <td>
+                    <span>@ViewBag.i</span>
+                    @{ViewBag.i = ViewBag.i + 1;}
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Action)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Result)
+                </td>
+            </tr>
+        }
+    </table>
+
+
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Result)
@@ -36,7 +80,7 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.BugId)
     </div>
-
+   
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Comments)
     </div>
@@ -44,14 +88,9 @@
         @Html.DisplayFor(model => model.Comments)
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Environment)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Environment)
-    </div>
+    
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.TestCaseId }) |
-    @Html.ActionLink("Go Back","List","Project",new {projectId = ViewBag.projectId} ,null)
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TestCaseId }) |
+    @Html.ActionLink("Go Back", "List", "Project", new { projectId = Model.ProjectId } , null)
 </p>

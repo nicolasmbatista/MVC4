@@ -20,5 +20,7 @@ namespace QATool.Models
         public DbSet<Project> Projects { get; set; }
 
         public DbSet<TestCase> TestCases { get; set; }
+
+        public DbSet<Step> Steps { get; set; }
     }
 }

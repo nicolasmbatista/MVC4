@@ -47,3 +47,5 @@ C:\Users\nbatista\Desktop\Capacitation\MVC4\QATool\QATool\bin\DotNetOpenAuth.Ope
 C:\Users\nbatista\Desktop\Capacitation\MVC4\QATool\QATool\obj\Debug\QATool.csprojResolveAssemblyReference.cache
 C:\Users\nbatista\Desktop\Capacitation\MVC4\QATool\QATool\obj\Debug\QATool.dll
 C:\Users\nbatista\Desktop\Capacitation\MVC4\QATool\QATool\obj\Debug\QATool.pdb
+C:\Users\nbatista\Desktop\Capacitation\MVC4\QATool\QATool\obj\Debug\QATool.Migrations.nullableBugId.resources
+C:\Users\nbatista\Desktop\Capacitation\MVC4\QATool\QATool\obj\Debug\QATool.csproj.GenerateResource.Cache

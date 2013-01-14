@@ -12,8 +12,13 @@
     <fieldset>
         <legend>TestCase</legend>
 
-        @Html.HiddenFor(model => model.TestCaseId)
-
+        <div class="editor-field">            
+            @Html.Hidden("ProjectId")
+           
+            @Html.ValidationMessageFor(model => model.ProjectId)
+        </div>
+        
+            @Html.Hidden("TestCaseId")
         <div class="editor-label">
             @Html.LabelFor(model => model.Feature)
         </div>
@@ -37,6 +42,43 @@
             @Html.EditorFor(model => model.Environment)
             @Html.ValidationMessageFor(model => model.Environment)
         </div>
+
+        <div class="display-label">
+            Steps
+        </div>
+
+        @Html.ActionLink("Add step", "Create", "Step", new { testCaseId = Model.TestCaseId }, null)
+
+        <table>
+            <tr>
+                <th>
+                    Step
+                </th>
+                <th>
+                    Action
+                </th>
+                <th>
+                    Expected Result
+                </th>
+            </tr>
+
+            @{ViewBag.i = 1;}
+            @foreach (var item in Model.Steps)
+            {
+                <tr>
+                    <td>
+                        <span>@ViewBag.i</span>
+                        @{ViewBag.i = ViewBag.i + 1;}
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Action)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Result)
+                    </td>
+                </tr>
+            }
+        </table>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Result)
@@ -69,7 +111,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Go Back","List","Project",new {projectId = Model.ProjectId} ,null)
 </div>
 
 @section Scripts {
