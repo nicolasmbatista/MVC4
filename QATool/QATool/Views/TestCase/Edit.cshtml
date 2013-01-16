@@ -69,31 +69,10 @@
 
             @foreach (var step in Model.Steps)
             {
-                ViewBag.i++;
-                @*<tr>
-                    <td>
-                        <input type="hidden" name="Steps.Index" value="@ViewBag.i" />
-                    </td>
-                    <td>
-                        <div class="display-label">
-                            @ViewBag.i                            
-                            <input type="hidden" name="Steps[@ViewBag.i].StepId" value="@step.StepId" />
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            <input type="text" name="Steps[@ViewBag.i].Action" value="@step.Action" />
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editor-field">
-                            <input type="text" name="Steps[@ViewBag.i].Result" value="@step.Result" />
-                        </div>
-                    </td>
-                </tr>*@
-                //@StepRow(ViewBag.i, step.StepId, step.Action, step.Result)
-                //The partial view is also working
-                 @Html.Partial("_StepRow", step)
+                ViewBag.i++;            
+                
+                @StepRow(ViewBag.i, step.StepId, step.Action, step.Result)
+                //@Html.Partial("_StepRow", step)
             }
 
 
@@ -134,45 +113,102 @@
     @Html.ActionLink("Go Back", "List", "Project", new { projectId = Model.ProjectId }, null)
 </div>
 
- 
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval") 
-    <script type="text/javascript">
-        $('document').ready(function () {            
+    <script type="text/javascript">    
+        
+        $('document').ready(function () {
+
+            $.validator.unobtrusive.parseDynamicContent = function (selector) {
+                //use the normal unobstrusive.parse method
+                $.validator.unobtrusive.parse(selector);
+
+                //get the relevant form
+                var form = $(selector).first().closest('form');
+
+                //get the collections of unobstrusive validators, and jquery validators
+                //and compare the two
+                var unobtrusiveValidation = form.data('unobtrusiveValidation');
+                var validator = form.validate();
+
+                $.each(unobtrusiveValidation.options.rules, function (elname, elrules) {
+                    if (validator.settings.rules[elname] == undefined) {
+                        var args = {};
+                        $.extend(args, elrules);
+                        args.messages = unobtrusiveValidation.options.messages[elname];
+                        //edit:use quoted strings for the name selector
+                        
+                        $("[name='" + elname + "']").rules("add", args);
+                    } else {
+                        $.each(elrules, function (rulename, data) {
+                            if (validator.settings.rules[elname][rulename] == undefined) {
+                                var args = {};
+                                args[rulename] = data;
+                                args.messages = unobtrusiveValidation.options.messages[elname][rulename];
+                                //edit:use quoted strings for the name selector
+                                $("[name='" + elname + "']").rules("add", args);
+                            }
+                        });
+                    }
+                });
+            }
+
+            var i = @(ViewBag.i)
             $('.btnAddStep').on('click', function () {
-                $('#TestCaseSteps').append($('#stepTemplate').text());
+                i++;
+                var text = $('#stepTemplate').text();
+                console.log(text);
+                var $el = $(text);                
+                $el.find('#s_0').attr({ 'id': 's_' + i, 'name': 'Steps[' + i + '].StepId' });
+                $el.find('#d_0').html(i);
+                $el.find('#d_0').attr({ 'id': 'd_' + i });
+                $el.find('#a_0').attr({ 'id': 'a_' + i, 'name': 'Steps[' + i + '].Action' });
+                $el.find('#r_0').attr({ 'id': 'r_' + i, 'name': 'Steps[' + i + '].Result' });
+                $el.find('#i_0').attr({ 'id': 's_' + i, 'value': i });
+                $el.find('#aSpan_0').attr({ 'id': 'aSpan_' + i, 'data-valmsg-for' : 'Steps[' + i + '].Action'});
+                $el.find('#rSpan_0').attr({ 'id': 'rSpan_' + i, 'data-valmsg-for': 'Steps[' + i + '].Result' });
+                $('#TestCaseSteps').append($el);
+                window.ee = $el;
+                $el.find("input").each(function () {
+                    jQuery.validator.unobtrusive.parseElement(this, false);
+                    $.validator.unobtrusive.parseDynamicContent(this);
+                    }
+                );
+                //jQuery.validator.unobtrusive.parseElement($("#TestCaseSteps input:last")[0], false);
+                //$.validator.unobtrusive.parseDynamicContent("#TestCaseSteps input:last");
+
+
+                //jQuery.validator.unobtrusive.parseElement($el,true);
             });
         });
     </script>
     <script id="stepTemplate">
-        @StepRow(100)
+        @StepRow(0)
     </script>
 }
 
 @helper StepRow(int i, int id = 0, string action = null, string result = null)
 {
-    <tr>
+    <tr>           
         <td>
-            <input type="hidden" name="Steps.Index" value="@i" />
-        </td>
-        <td>
-            <div class="display-label">
-                @i
-                <input type="hidden" name="Steps[@i].StepId" value="@id" />
+            <div class="display-label">                
+                <input type="hidden" name="Steps.Index" value="@i" id="i_@i" />                                        
+                <input type="hidden" id="s_@i" name="Steps[@i].StepId" value="@i"> 
+                <div id="d_@i">@i</div> 
             </div>
         </td>
         <td>
             <div class="editor-field">
-                <input class="text-box single-line" data-val="true" data-val-required="The Action field is required." id="Steps_action" name="Steps[@i].Action" type="text" value="@action" />
-                <span class="field-validation-valid" data-valmsg-for="Steps_action" data-valmsg-replace="true"></span>           
+                <input class="text-box single-line" data-val="true" data-val-required="The Action field is required."  name="Steps[@i].Action" type="text" value="@action" id="a_@i"/>
+                <span class="field-validation-valid" data-valmsg-for="Steps[@i].Action" data-valmsg-replace="true" id="aSpan_@i"></span>
             </div>
         </td>
         <td>
             <div class="editor-field">
-                <input class="text-box single-line" data-val="true" data-val-required="The Result field is required." id="Steps_result" name="Steps[@i].Result" type="text" value="@result" />
-                <span class="field-validation-valid" data-valmsg-for="Steps_result" data-valmsg-replace="true"></span>            </div>
+                <input class="text-box single-line" data-val="true" data-val-required="The Result field is required." name="Steps[@i].Result" type="text" value="@result" id="r_@i"/>
+                <span class="field-validation-valid" data-valmsg-for="Steps[@i].Result" data-valmsg-replace="true" id="rSpan_@i"></span>
+            </div>
         </td>
     </tr>
 }
