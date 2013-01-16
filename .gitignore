@@ -1,0 +1,53 @@
+[HttpPost]
+        public ActionResult Edit(TestCase testcase)
+        {
+            if (ModelState.IsValid)
+            {
+                var dbTestcase = _db.TestCases.Include(x => x.Steps).Where(x => x.TestCaseId == testcase.TestCaseId).FirstOrDefault();
+
+                if (dbTestcase == null)
+                {
+                    return new HttpNotFoundResult();
+                }
+                else
+                {
+                    //This way, the user can't change the project id or the testcase id as he pleases
+                    dbTestcase.BugId = testcase.BugId;
+                    dbTestcase.Comments = testcase.Comments;
+                    dbTestcase.Environment = testcase.Environment;
+                    dbTestcase.Feature = testcase.Feature;
+                    dbTestcase.Result = testcase.Result;
+                    dbTestcase.Scenario = testcase.Scenario;
+
+                    if (testcase.Steps != null)
+                    {
+                        var newSteps = testcase.Steps.Where(x => x.StepId == 0);
+                        var modifiedSteps = testcase.Steps.Where(x => x.StepId != 0);
+
+                        dbTestcase.Steps.AddRange(newSteps);
+
+                        //This should be done inside a while, so you don't have to search in the entire list for every item.
+                        foreach (var modStep in modifiedSteps)
+                        {
+                            foreach (var oldStep in dbTestcase.Steps)
+                            {
+                                //If the step already exists, i should update it
+                                if (oldStep.StepId == modStep.StepId)
+                                {
+                                    oldStep.Action = modStep.Action;
+                                    oldStep.Result = modStep.Result;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        dbTestcase.Steps.RemoveAll(x => x.TestCaseId == testcase.TestCaseId);
+                    }
+                    _db.SaveChanges();
+                }
+                
+                return RedirectToAction("List", "Project", new { projectId = testcase.ProjectId });
+            }
+            return RedirectToAction("List", "Project", new { projectId = testcase.ProjectId });
+        }
