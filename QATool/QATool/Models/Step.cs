@@ -9,10 +9,10 @@ namespace QATool.Models
 {
     public class Step
     {
-        [Key]
+        [Key, Column(Order=0)]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public virtual int StepId { get; set; }
-
+        [Key, Column(Order = 1)]
         public virtual int TestCaseId { get; set; }
 
         [Required]

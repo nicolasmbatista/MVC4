@@ -6,7 +6,8 @@
 
 <h2>@ViewBag.ProjectName - Test Case @Html.DisplayFor(model => model.TestCaseId)</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -47,9 +48,9 @@
             Steps
         </div>
 
-        @Html.ActionLink("Add step", "Create", "Step", new { testCaseId = Model.TestCaseId }, null)
-
-        <table>
+        <button class="btnAddStep" type="button">Add Step</button>
+        
+        <table id="TestCaseSteps">
             <tr>
                 <th>
                     Step
@@ -62,22 +63,40 @@
                 </th>
             </tr>
 
-            @{ViewBag.i = 1;}
-            @foreach (var item in Model.Steps)
-            {
-                <tr>
-                    <td>
-                        <span>@ViewBag.i</span>
-                        @{ViewBag.i = ViewBag.i + 1;}
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Action)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Result)
-                    </td>
-                </tr>
+            @{
+                ViewBag.i = 0;
             }
+
+            @foreach (var step in Model.Steps)
+            {
+                ViewBag.i++;
+                @*<tr>
+                    <td>
+                        <input type="hidden" name="Steps.Index" value="@ViewBag.i" />
+                    </td>
+                    <td>
+                        <div class="display-label">
+                            @ViewBag.i                            
+                            <input type="hidden" name="Steps[@ViewBag.i].StepId" value="@step.StepId" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            <input type="text" name="Steps[@ViewBag.i].Action" value="@step.Action" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editor-field">
+                            <input type="text" name="Steps[@ViewBag.i].Result" value="@step.Result" />
+                        </div>
+                    </td>
+                </tr>*@
+                //@StepRow(ViewBag.i, step.StepId, step.Action, step.Result)
+                //The partial view is also working
+                 @Html.Partial("_StepRow", step)
+            }
+
+
         </table>
 
         <div class="editor-label">
@@ -107,13 +126,54 @@
         <p>
             <input type="submit" value="Save" />
         </p>
-    </fieldset>
+    </fieldset>    
+    
 }
 
 <div>
-    @Html.ActionLink("Go Back","List","Project",new {projectId = Model.ProjectId} ,null)
+    @Html.ActionLink("Go Back", "List", "Project", new { projectId = Model.ProjectId }, null)
 </div>
 
+ 
+
+
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval") 
+    <script type="text/javascript">
+        $('document').ready(function () {            
+            $('.btnAddStep').on('click', function () {
+                $('#TestCaseSteps').append($('#stepTemplate').text());
+            });
+        });
+    </script>
+    <script id="stepTemplate">
+        @StepRow(100)
+    </script>
 }
+
+@helper StepRow(int i, int id = 0, string action = null, string result = null)
+{
+    <tr>
+        <td>
+            <input type="hidden" name="Steps.Index" value="@i" />
+        </td>
+        <td>
+            <div class="display-label">
+                @i
+                <input type="hidden" name="Steps[@i].StepId" value="@id" />
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                <input class="text-box single-line" data-val="true" data-val-required="The Action field is required." id="Steps_action" name="Steps[@i].Action" type="text" value="@action" />
+                <span class="field-validation-valid" data-valmsg-for="Steps_action" data-valmsg-replace="true"></span>           
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                <input class="text-box single-line" data-val="true" data-val-required="The Result field is required." id="Steps_result" name="Steps[@i].Result" type="text" value="@result" />
+                <span class="field-validation-valid" data-valmsg-for="Steps_result" data-valmsg-replace="true"></span>            </div>
+        </td>
+    </tr>
+}
+

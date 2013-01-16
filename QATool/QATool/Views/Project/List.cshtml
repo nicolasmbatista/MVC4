@@ -51,7 +51,7 @@
             @Html.DisplayFor(modelItem => item.Result)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BugId)
+            <a href="@Model.JiraURL-@item.BugId" target="_blank"><button type="button" class="@item.BugId">@Html.DisplayFor(modelItem => item.BugId)</button></a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Comments)
