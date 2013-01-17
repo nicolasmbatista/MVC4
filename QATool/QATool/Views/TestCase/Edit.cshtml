@@ -50,29 +50,35 @@
 
         <button class="btnAddStep" type="button">Add Step</button>
         <table id="TestCaseSteps">
-            <tr>
-                <th>
-                    Step
-                </th>
-                <th>
-                    Action
-                </th>
-                <th>
-                    Expected Result
-                </th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>
+                        Step
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                    <th>
+                        Expected Result
+                    </th>
+                    <th>
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    ViewBag.i = 0;
+                }
 
-            @{
-                ViewBag.i = 0;
-            }
-
-            @foreach (var step in Model.Steps)
-            {
-                ViewBag.i++;            
+                @foreach (var step in Model.Steps)
+                {
+                    ViewBag.i++;            
                 
-                @StepRow(ViewBag.i,step.StepId, step.Action, step.Result)
-                //@Html.Partial("_StepRow", step)
-            }
+                    @StepRow(ViewBag.i,step.StepId, step.Action, step.Result)
+                    //@Html.Partial("_StepRow", step)
+                }
+            </tbody>
         </table>
         <div class="editor-label">
             @Html.LabelFor(model => model.Result)

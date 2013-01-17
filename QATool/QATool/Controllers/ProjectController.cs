@@ -103,6 +103,17 @@ namespace QATool.Controllers
                 return HttpNotFound();
             }
             return View(project);
+        
+        }
+
+        public ActionResult Copy(int projectId)
+        {
+            Project project = _db.Projects.Where(x => x.ProjectId == projectId).FirstOrDefault();
+            Project newProject = project.DeepClone();
+            
+            _db.Projects.Add(newProject);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         //

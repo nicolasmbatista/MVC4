@@ -9,61 +9,77 @@
 <p>
     @Html.ActionLink("Add Test", "Create", "TestCase", new { projectId = Model.ProjectId}, null)
 </p>
-<table>
-    <tr>
-        <th>
-            ID
-        </th>
-        <th>
-            Scenario
-        </th>
-        <th>
-            Feature
-        </th>
-        <th>
-            Result
-        </th>
-        <th>
-            BugId
-        </th>
-        <th>
-            Comments
-        </th>
-        <th>
-            Environment
-        </th>
-        <th></th>
-    </tr>
-
-
-@foreach (var item in Model.TestCases) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TestCaseId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Scenario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Feature)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Result)
-        </td>
-        <td>
-            <a href="@Model.JiraURL-@item.BugId" target="_blank"><button type="button" class="@item.BugId">@Html.DisplayFor(modelItem => item.BugId)</button></a>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comments)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Environment)
-        </td>
-        <td>
-            <p>@Html.ActionLink("Edit", "Edit", "TestCase", new { id = item.TestCaseId }, null)</p>
-            <p>@Html.ActionLink("Details", "Details", "TestCase", new { id = item.TestCaseId }, null)</p>
-            <p>@Html.ActionLink("Delete", "Delete", "TestCase", new { id = item.TestCaseId, projectId = ViewBag.projetId},null)</p>
-        </td>
-    </tr>
-}
+<table id="testCaseTable">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Scenario
+            </th>
+            <th>
+                Feature
+            </th>
+            <th>
+                Result
+            </th>
+            <th>
+                BugId
+            </th>
+            <th>
+                Comments
+            </th>
+            <th>
+                Environment
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.TestCases) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestCaseId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Scenario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Feature)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Result)
+            </td>
+            <td>
+                @if (item.BugId != null)
+                {
+                    <a href="@Model.JiraURL-@item.BugId" target="_blank"><button type="button" class="btnBugId">@Html.DisplayFor(modelItem => item.BugId)</button></a>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Environment)
+            </td>
+            <td>
+                <button class="btnAction">@Html.ActionLink("Edit", "Edit", "TestCase", new { id = item.TestCaseId }, null)</button><br />
+                <button class="btnAction">@Html.ActionLink("Details", "Details", "TestCase", new { id = item.TestCaseId }, null)</button><br />
+                <button class="btnAction">@Html.ActionLink("Delete", "Delete", "TestCase", new { id = item.TestCaseId, projectId = ViewBag.projetId},null)</button>
+            </td>
+        </tr>    
+        }
+    </tbody>
 </table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval") 
+    <script type="text/javascript">
+        $('document').ready(function () {
+            $('#testCaseTable').dataTable();
+        });
+    </script>
+}

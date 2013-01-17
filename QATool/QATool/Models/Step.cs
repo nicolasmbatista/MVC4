@@ -20,5 +20,13 @@ namespace QATool.Models
       
         [Required]
         public virtual string Result { get; set; }
+
+        public Step DeepClone()
+        {
+            Step newStep = new Step();
+            newStep.Result = this.Result;
+            newStep.Action = this.Action;
+            return newStep;
+        }
     }
 }

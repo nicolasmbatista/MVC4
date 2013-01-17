@@ -31,5 +31,24 @@ namespace QATool.Models
         public virtual string Comments { get; set; }
         public virtual string Environment { get; set; }
         public virtual List<Step> Steps { get; set; }
+
+        public TestCase DeepClone()
+        {
+            TestCase newTestCase = new TestCase();
+            newTestCase.Result = this.Result;
+            newTestCase.Scenario = this.Scenario;
+            newTestCase.BugId = this.BugId;
+            newTestCase.Comments = this.Comments;
+            newTestCase.Feature = this.Feature;
+
+            newTestCase.Steps = new List<Step>();
+            foreach (var step in this.Steps)
+            {
+                Step aux = step.DeepClone();
+                newTestCase.Steps.Add(aux);
+            }  
+
+            return newTestCase;
+        }
     }
 }

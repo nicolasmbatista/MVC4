@@ -1,41 +1,63 @@
 ﻿@model IEnumerable<QATool.Models.Project>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Projects";
 }
 
-<h2>Index</h2>
+<h2>Projects</h2>
 
-<table>
-    <tr>
-        <th>
-            Project
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            Action
-        </th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            <p>@Html.ActionLink("Test Cases", "List",  new {projectId = item.ProjectId})</p>
-            <p>@Html.ActionLink("Edit", "Edit", new { id=item.ProjectId })</p>
-            <p>@Html.ActionLink("Delete", "Delete", new { id=item.ProjectId })</p>
-        </td>
-    </tr>
-}
-
+<table id="projectTable">
+    <thead>
+        <tr>
+            <th>
+                Project
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                Jira
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a href="@item.JiraURL" target="_blank"><button type="button">Go</button></a>
+                </td>
+                <td>
+                   
+                        <button class="btnAction">@Html.ActionLink("Test Cases", "List",  new {projectId = item.ProjectId})</button>
+                        <button class="btnAction">@Html.ActionLink("Edit", "Edit", new { id=item.ProjectId })</button>
+                   
+                   <br />
+                        <button class="btnAction">@Html.ActionLink("Copy", "Copy", new { projectId = item.ProjectId })</button>
+                        <button class="btnAction">@Html.ActionLink("Delete", "Delete", new { id=item.ProjectId })</button>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval") 
+    <script type="text/javascript">
+        $('document').ready(function () {
+            $('#projectTable').dataTable();
+        });
+    </script>
+}

@@ -428,7 +428,7 @@ input, textarea {
     border: 1px solid #e2e2e2;
     background: #fff;
     color: #333;
-    font-size: 1.2em;
+    font-size: 0.8em;
     margin: 5px 0 6px 0;
     padding: 5px;
     width: 300px;
@@ -449,6 +449,20 @@ textarea {
         width: auto;
     }
 
+    button a,
+    button a:hover {
+        text-decoration : none;
+        background-color: #d3dce0;
+    }
+
+    button.btnAction {
+        width : 100px;
+    }
+
+    button.btnBugId {
+        width : 50px;
+    }
+
     input[type="submit"],
     input[type="button"],
     button {
@@ -457,17 +471,17 @@ textarea {
         cursor: pointer;
         font-size: 1.2em;
         font-weight: 600;
-        padding: 7px;
-        margin-right: 8px;
-        width: auto;
+        padding: 0px;
+        margin-right: 0px;
+        width: 100px;
     }
 
     td input[type="submit"],
     td input[type="button"],
     td button {
         font-size: 1em;
-        padding: 4px;
-        margin-right: 4px;
+        padding: 0px;
+        margin-right: 0px;
     }
 
 /* info and errors */
@@ -527,17 +541,15 @@ input[type="checkbox"].input-validation-error {
 
 /* tables
 ----------------------------------------------------------*/
+
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-top: 0.75em;
-    border: 0 none;
+    border-width : 2px;
 }
 
 th {
+    border-width : 2px;
     font-size: 1.2em;
     text-align: left;
-    border: none 0px;
     padding-left: 0;
 }
 
@@ -577,12 +589,12 @@ th {
         content: '▼';
     }
 
-td {
+td {    
     padding: 0.25em 2em 0.25em 0em;
-    border: 0 none;
+    border-width : 2px;
 }
 
-tr.pager td {
+tr.pager td {    
     padding: 0 0.25em 0 0;
 }
 

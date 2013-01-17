@@ -24,5 +24,20 @@ namespace QATool.Models
         [DataType(DataType.Url)]
         [Required]
         public virtual string JiraURL { get; set; }
+
+        public Project DeepClone()
+        {
+            Project newProject = new Project();
+            newProject.Name = this.Name+" (Copy)";
+            newProject.Description = this.Description;
+            newProject.JiraURL = this.JiraURL;
+            newProject.TestCases = new List<TestCase>();
+            foreach(var tcase in this.TestCases)
+            {
+                TestCase aux = tcase.DeepClone();
+                newProject.TestCases.Add(aux);
+            }            
+            return newProject;
+        }
     }
 }
