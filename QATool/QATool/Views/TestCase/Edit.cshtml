@@ -71,7 +71,7 @@
             {
                 ViewBag.i++;            
                 
-                @StepRow(ViewBag.i, step.StepId, step.Action, step.Result)
+                @StepRow(ViewBag.i,step.StepId, step.Action, step.Result)
                 //@Html.Partial("_StepRow", step)
             }
 
@@ -192,9 +192,9 @@
 {
     <tr>           
         <td>
-            <div class="display-label">                
+            <div class="display-label">        
                 <input type="hidden" name="Steps.Index" value="@i" id="i_@i" />                                        
-                <input type="hidden" id="s_@i" name="Steps[@i].StepId" value="@i"> 
+                <input type="hidden" id="s_@i" name="Steps[@i].StepId" value="@id"> 
                 <div id="d_@i">@i</div> 
             </div>
         </td>

@@ -103,12 +103,16 @@ namespace QATool.Controllers
                     dbTestcase.Feature = testcase.Feature;
                     dbTestcase.Result = testcase.Result;
                     dbTestcase.Scenario = testcase.Scenario;
+                    foreach (var step in testcase.Steps)
+                    {
+                        step.TestCaseId = testcase.TestCaseId;
+                    }
 
                     if (testcase.Steps != null)
                     {
                         var newSteps = testcase.Steps.Where(x => x.StepId == 0);
-                        var modifiedSteps = testcase.Steps.Where(x => x.StepId != 0);
-
+                        //var modifiedSteps = testcase.Steps.Where(x => x.StepId != 0);
+                        List<Step> modifiedSteps = testcase.Steps.Where(x => x.StepId != 0).ToList();
                         dbTestcase.Steps.AddRange(newSteps);
 
                         //This should be done inside a while, so you don't have to search in the entire list for every item.
