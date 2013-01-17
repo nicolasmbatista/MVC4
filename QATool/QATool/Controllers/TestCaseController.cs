@@ -114,6 +114,9 @@ namespace QATool.Controllers
                         //var modifiedSteps = testcase.Steps.Where(x => x.StepId != 0);
                         List<Step> modifiedSteps = testcase.Steps.Where(x => x.StepId != 0).ToList();
                         dbTestcase.Steps.AddRange(newSteps);
+                        HashSet<int> newStepIds = new HashSet<int>(testcase.Steps.Select(x => x.StepId));
+                         
+                        dbTestcase.Steps.RemoveAll(x => !newStepIds.Contains(x.StepId));
 
                         //This should be done inside a while, so you don't have to search in the entire list for every item.
                         foreach (var modStep in modifiedSteps)
