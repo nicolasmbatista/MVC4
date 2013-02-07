@@ -1,6 +1,0 @@
-TODO:
-
-step edit
-step delete
-hide bug link if null
-Copy project

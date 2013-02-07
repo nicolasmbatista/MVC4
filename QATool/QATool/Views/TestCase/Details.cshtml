@@ -102,7 +102,26 @@
     @Scripts.Render("~/bundles/jqueryval") 
     <script type="text/javascript">
         $('document').ready(function () {
-            $('#testCaseTable').dataTable();
+            $('#testCaseTable').dataTable({
+
+                "sDom": 'T<"clear">lfrtip',
+
+                "aaSorting": [[0, "desc"]],
+
+                "oTableTools": {
+                    "sSwfPath": "/Content/DataTables-1.9.4/extras/TableTools/media/swf/copy_csv_xls_pdf.swf",
+                    "aButtons": [
+                                    "csv",
+                                    "pdf",
+                                    "print",
+                                    "xls"
+                    ]
+                },
+
+                "bPaginate": false
+
+            });
+
         });
     </script>
 }

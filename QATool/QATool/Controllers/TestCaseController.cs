@@ -102,14 +102,15 @@ namespace QATool.Controllers
                     dbTestcase.Environment = testcase.Environment;
                     dbTestcase.Feature = testcase.Feature;
                     dbTestcase.Result = testcase.Result;
-                    dbTestcase.Scenario = testcase.Scenario;
-                    foreach (var step in testcase.Steps)
-                    {
-                        step.TestCaseId = testcase.TestCaseId;
-                    }
+                    dbTestcase.Scenario = testcase.Scenario;                    
 
                     if (testcase.Steps != null)
                     {
+                        foreach (var step in testcase.Steps)
+                        {
+                            step.TestCaseId = testcase.TestCaseId;
+                        }
+
                         var newSteps = testcase.Steps.Where(x => x.StepId == 0);
                         //var modifiedSteps = testcase.Steps.Where(x => x.StepId != 0);
                         List<Step> modifiedSteps = testcase.Steps.Where(x => x.StepId != 0).ToList();

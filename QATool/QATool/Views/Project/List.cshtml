@@ -79,7 +79,19 @@
     @Scripts.Render("~/bundles/jqueryval") 
     <script type="text/javascript">
         $('document').ready(function () {
-            $('#testCaseTable').dataTable();
+            var oTable = $('#testCaseTable').dataTable();
+            var oTableTools = new TableTools( oTable, {
+                "buttons": [
+                    "copy",
+                    "csv",
+                    "xls",
+                    "pdf",
+                    { "type": "print", "buttonText": "Print me!" }
+                ]
+            }); 
+
+            $('#testCaseTable').before(oTableTools.dom.container);
+             
         });
     </script>
 }
