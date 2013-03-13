@@ -76,7 +76,14 @@ namespace QATool.Controllers
                 return HttpNotFound();
             }
             //Cambiar esto por el proyecto al q pertenece el testcase
-            @ViewBag.ProjectName = "Proyecto 123";
+            @ViewBag.ProjectName = _db.Projects.Find(testcase.ProjectId).Name;
+            testcase.Results = new []
+            {
+                new SelectListItem { Value = "PASSED", Text = "PASSED" },
+                new SelectListItem { Value = "FAILED", Text = "FAILED" },
+                new SelectListItem { Value = "UNTESTED", Text = "UNTESTED" }
+            }; 
+
             return View(testcase);
         }
 

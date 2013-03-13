@@ -31,6 +31,49 @@ a {
         background-color: #c7d1d6;
     }
 
+    input[type="submit"],
+    input[type="button"],
+a.button {
+    text-align : center;
+    width : 100px;
+    height : auto;
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+}
+        input[type="submit"]:hover,
+    input[type="button"]:hover,
+a.button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+    cursor:pointer;
+}
+a.button:active {
+	position:relative;
+	top:1px;
+}
+ a.btnnumber {
+    width : 30px;
+}
+
 header, footer, hgroup,
 nav, section {
     display: block;
@@ -424,6 +467,18 @@ label.checkbox {
     display: inline;
 }
 
+span.greenFont {
+    color : green;
+}
+
+span.redFont {
+    color : red;
+}
+
+span.defaultFont {
+    color : black;
+}
+
 input, textarea {
     border: 1px solid #e2e2e2;
     background: #fff;
@@ -461,19 +516,6 @@ textarea {
 
     button.btnBugId {
         width : 50px;
-    }
-
-    input[type="submit"],
-    input[type="button"],
-    button {
-        background-color: #d3dce0;
-        border: 1px solid #787878;
-        cursor: pointer;
-        font-size: 1.2em;
-        font-weight: 600;
-        padding: 0px;
-        margin-right: 0px;
-        width: 100px;
     }
 
     td input[type="submit"],

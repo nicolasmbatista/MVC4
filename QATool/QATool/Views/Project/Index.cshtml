@@ -33,16 +33,16 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    <a href="@item.JiraURL" target="_blank"><button type="button">Go</button></a>
+                    <a href="@item.JiraURL" target="_blank" class="button">Go</a>
                 </td>
                 <td>
                    
-                        <button class="btnAction">@Html.ActionLink("Test Cases", "List",  new {projectId = item.ProjectId})</button>
-                        <button class="btnAction">@Html.ActionLink("Edit", "Edit", new { id=item.ProjectId })</button>
+                        @Html.ActionLink("Test Cases", "List",  new {projectId = item.ProjectId},new { @class = "button"})
+                        @Html.ActionLink("Edit", "Edit", new { id=item.ProjectId },new { @class = "button"})
                    
                    <br />
-                        <button class="btnAction">@Html.ActionLink("Copy", "Copy", new { projectId = item.ProjectId })</button>
-                        <button class="btnAction">@Html.ActionLink("Delete", "Delete", new { id=item.ProjectId })</button>
+                        @Html.ActionLink("Copy", "Copy", new { projectId = item.ProjectId},new { @class = "button"})
+                        @Html.ActionLink("Delete", "Delete", new { id=item.ProjectId },new { @class = "button"})
                     
                 </td>
             </tr>
@@ -50,7 +50,7 @@
     </tbody>
 </table>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { @class = "button" })
 </p>
 
 @section Scripts {

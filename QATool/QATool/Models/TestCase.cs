@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace QATool.Models
 {
@@ -25,7 +26,9 @@ namespace QATool.Models
         
         [Required]
         public virtual string Result { get; set; }
-        
+        //DropDown for list for result
+        public virtual IEnumerable<SelectListItem> Results { get; set; }
+
         //Declaring this int with a ? makes it so it can be null, cause not every test case has a bug!
         public virtual int? BugId { get; set; }
         public virtual string Comments { get; set; }
@@ -40,7 +43,7 @@ namespace QATool.Models
             newTestCase.BugId = this.BugId;
             newTestCase.Comments = this.Comments;
             newTestCase.Feature = this.Feature;
-
+            newTestCase.Environment = this.Environment;
             newTestCase.Steps = new List<Step>();
             foreach (var step in this.Steps)
             {

@@ -7,7 +7,7 @@
 <h2>@Model.Name - Test cases</h2>
 
 <p>
-    @Html.ActionLink("Add Test", "Create", "TestCase", new { projectId = Model.ProjectId}, null)
+    @Html.ActionLink("Add Test", "Create", "TestCase", new { projectId = Model.ProjectId }, new { @class = "button" })
 </p>
 <table id="testCaseTable">
     <thead>
@@ -51,12 +51,25 @@
                 @Html.DisplayFor(modelItem => item.Feature)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Result)
+                    @if(item.Result == "PASSED")
+                    {
+                        @:<span class="greenFont">@Html.DisplayFor(modelItem => item.Result)</span>
+                    }
+                    else if(item.Result == "FAILED")
+                    {
+                        @:<span class="redFont">@Html.DisplayFor(modelItem => item.Result)</span>
+                    }
+                    else
+                    {
+                        @:<span class="defaultFont">@Html.DisplayFor(modelItem => item.Result)</span>
+                    }
+                    
+                    
             </td>
             <td>
                 @if (item.BugId != null)
                 {
-                    <a href="@Model.JiraURL-@item.BugId" target="_blank"><button type="button" class="btnBugId">@Html.DisplayFor(modelItem => item.BugId)</button></a>
+                    <a href="@Model.JiraURL-@item.BugId" target="_blank" class="btnnumber button">@Html.DisplayFor(modelItem => item.BugId)</a>
                 }
             </td>
             <td>
@@ -66,14 +79,16 @@
                 @Html.DisplayFor(modelItem => item.Environment)
             </td>
             <td>
-                <button class="btnAction">@Html.ActionLink("Edit", "Edit", "TestCase", new { id = item.TestCaseId }, null)</button><br />
-                <button class="btnAction">@Html.ActionLink("Details", "Details", "TestCase", new { id = item.TestCaseId }, null)</button><br />
-                <button class="btnAction">@Html.ActionLink("Delete", "Delete", "TestCase", new { id = item.TestCaseId, projectId = ViewBag.projetId},null)</button>
+                @Html.ActionLink("Edit", "Edit", "TestCase", new { id = item.TestCaseId }, new { @class = "button" })<br />
+                @Html.ActionLink("Details", "Details", "TestCase", new { id = item.TestCaseId }, new { @class = "button" })<br />
+                @Html.ActionLink("Delete", "Delete", "TestCase", new { id = item.TestCaseId, projectId = ViewBag.projetId }, new { @class = "button" })
             </td>
         </tr>    
         }
     </tbody>
 </table>
+
+<p>@Html.ActionLink("Back", "Index", "Project", null, new { @class = "button" } )</p>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval") 
