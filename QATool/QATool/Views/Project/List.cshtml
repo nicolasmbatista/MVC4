@@ -66,7 +66,7 @@
                     
                     
             </td>
-            <td>
+            <td style ="text-align:center">
                 @if (item.BugId != null)
                 {
                     <a href="@Model.JiraURL-@item.BugId" target="_blank" class="btnnumber button">@Html.DisplayFor(modelItem => item.BugId)</a>
@@ -78,10 +78,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Environment)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", "TestCase", new { id = item.TestCaseId }, new { @class = "button" })<br />
-                @Html.ActionLink("Details", "Details", "TestCase", new { id = item.TestCaseId }, new { @class = "button" })<br />
-                @Html.ActionLink("Delete", "Delete", "TestCase", new { id = item.TestCaseId, projectId = ViewBag.projetId }, new { @class = "button" })
+            <td style ="width : 130px; padding-right:0px">
+                @Html.ActionLink(" ", "Edit", "TestCase", new { id = item.TestCaseId }, new { @class = "edit", title = "Edit" })
+                @Html.ActionLink(" ", "Details", "TestCase", new { id = item.TestCaseId }, new { @class = "details" , title = "Details"})
+                @Html.ActionLink(" ", "Delete", "TestCase", new { id = item.TestCaseId, projectId = ViewBag.projetId }, new { @class = "delete" , title = "Delete"})
             </td>
         </tr>    
         }
@@ -95,18 +95,7 @@
     <script type="text/javascript">
         $('document').ready(function () {
             var oTable = $('#testCaseTable').dataTable();
-            var oTableTools = new TableTools( oTable, {
-                "buttons": [
-                    "copy",
-                    "csv",
-                    "xls",
-                    "pdf",
-                    { "type": "print", "buttonText": "Print me!" }
-                ]
-            }); 
-
-            $('#testCaseTable').before(oTableTools.dom.container);
-             
+            $('#testCaseTable').before(oTableTools.dom.container);             
         });
     </script>
 }

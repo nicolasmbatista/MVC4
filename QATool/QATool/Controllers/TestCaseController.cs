@@ -46,7 +46,14 @@ namespace QATool.Controllers
         public ActionResult Create(int projectId)
         {
             ViewBag.projectId = projectId;
-            return View();
+            TestCase testCase = new TestCase();
+            testCase.Results = new[]
+            {
+                new SelectListItem { Value = "PASSED", Text = "PASSED" },
+                new SelectListItem { Value = "FAILED", Text = "FAILED" },
+                new SelectListItem { Value = "UNTESTED", Text = "UNTESTED" }
+            }; 
+            return View(testCase);
         }
 
         //
@@ -75,7 +82,6 @@ namespace QATool.Controllers
             {
                 return HttpNotFound();
             }
-            //Cambiar esto por el proyecto al q pertenece el testcase
             @ViewBag.ProjectName = _db.Projects.Find(testcase.ProjectId).Name;
             testcase.Results = new []
             {

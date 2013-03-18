@@ -54,7 +54,7 @@
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Go Back", "List", "Project", new { projectId = Model.ProjectId }, null)
+        <input type="submit" value="Delete" /> 
+        @Html.ActionLink("Go Back", "List", "Project", new { projectId = Model.ProjectId }, new { @class = "button" } )
     </p>
 }

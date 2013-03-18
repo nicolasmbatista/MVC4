@@ -8,7 +8,7 @@
 
 <fieldset>
     <legend>TestCase</legend>
-
+    <br />
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Feature)
     </div>
@@ -29,7 +29,7 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Environment)
     </div>
-
+    <br />
     <div class="display-label">
          Steps:
     </div>
@@ -71,6 +71,7 @@
 
 
     <div class="display-label">
+        <br />
          @Html.DisplayNameFor(model => model.Result)
     </div>
     <div class="display-field">
@@ -94,8 +95,8 @@
     
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TestCaseId }) |
-    @Html.ActionLink("Go Back", "List", "Project", new { projectId = Model.ProjectId } , null)
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TestCaseId }, new { @class = "button" } ) 
+    @Html.ActionLink("Go Back", "List", "Project", new { projectId = Model.ProjectId }, new { @class = "button" } )
 </p>
 
 @section Scripts {
@@ -104,7 +105,7 @@
         $('document').ready(function () {
             $('#testCaseTable').dataTable({
 
-                "sDom": 'T<"clear">lfrtip',
+                /*"sDom": 'T<"clear">lfrtip',
 
                 "aaSorting": [[0, "desc"]],
 
@@ -118,7 +119,7 @@
                     ]
                 },
 
-                "bPaginate": false
+                "bPaginate": false*/
 
             });
 

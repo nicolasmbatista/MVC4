@@ -26,24 +26,20 @@
     <tbody>
         @foreach (var item in Model) {
             <tr>
-                <td>
+                <td style="width : 30%">
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td>
+                <td style ="width : 40%">
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-                <td>
-                    <a href="@item.JiraURL" target="_blank" class="button">Go</a>
+                <td>                   
+                    <a href="@item.JiraURL" target="_blank" class="web" title="Visit Web"></a>
                 </td>
-                <td>
-                   
-                        @Html.ActionLink("Test Cases", "List",  new {projectId = item.ProjectId},new { @class = "button"})
-                        @Html.ActionLink("Edit", "Edit", new { id=item.ProjectId },new { @class = "button"})
-                   
-                   <br />
-                        @Html.ActionLink("Copy", "Copy", new { projectId = item.ProjectId},new { @class = "button"})
-                        @Html.ActionLink("Delete", "Delete", new { id=item.ProjectId },new { @class = "button"})
-                    
+                <td>                   
+                    @Html.ActionLink(" ", "List",  new {projectId = item.ProjectId},new { @class = "testcases", title = "Test Cases"})
+                    @Html.ActionLink(" ", "Edit", new { id=item.ProjectId },new { @class = "edit", title = "Edit"})
+                    @Html.ActionLink(" " ,"Copy", new { projectId = item.ProjectId},new { @class = "copy", title = "Copy"})
+                    @Html.ActionLink(" ", "Delete", new { id=item.ProjectId },new { @class = "delete", title = "Delete"})
                 </td>
             </tr>
         }

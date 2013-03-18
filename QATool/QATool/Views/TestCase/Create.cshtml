@@ -37,13 +37,13 @@
             @Html.LabelFor(model => model.Result)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Result)
-            @Html.ValidationMessageFor(model => model.Result)
+           @Html.DropDownListFor(m => m.Result, new SelectList(Model.Results, "Value", "Text"))
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.BugId)
         </div>
+
         <div class="editor-field">
             @Html.EditorFor(model => model.BugId)
             @Html.ValidationMessageFor(model => model.BugId)
@@ -64,16 +64,12 @@
             @Html.EditorFor(model => model.Environment)
             @Html.ValidationMessageFor(model => model.Environment)
         </div>
-
-        <p>
+</fieldset>
             <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+        @Html.ActionLink("Go Back", "List", "Project", new { projectId = ViewBag.projectId }, new { @class = "button" })
 }
 
-<div>
-    @Html.ActionLink("Go Back","List","Project",new {projectId = ViewBag.projectId} ,null)
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

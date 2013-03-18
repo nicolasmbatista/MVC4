@@ -37,16 +37,13 @@
             @Html.EditorFor(model => model.JiraURL)
             @Html.ValidationMessageFor(model => model.JiraURL)
         </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        
     </fieldset>
-}
+            <input type="submit" value="Save" /> 
+           
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+ @Html.ActionLink("Back to List", "Index", null, new { @class = "button" } )
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

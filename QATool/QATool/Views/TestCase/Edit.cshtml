@@ -45,9 +45,8 @@
         </div>
 
         <div class="display-label">
-            Steps
+            @Html.Label("Steps")
         </div>
-
         
         <table id="TestCaseSteps">
             <thead>
@@ -80,7 +79,7 @@
                 }
             </tbody>
         </table>
-        <button class="btnAddStep" type="button">Add Step</button>
+        <a class="btnAddStep add" title = "Add Step"></a>
         <div class="editor-label">
             @Html.LabelFor(model => model.Result)
         </div>
@@ -103,17 +102,10 @@
             @Html.EditorFor(model => model.Comments)
             @Html.ValidationMessageFor(model => model.Comments)
         </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>        
+        </fieldset> 
+        <input type="submit" value="Save" />
+        @Html.ActionLink("Go Back", "List", "Project", new { projectId = Model.ProjectId }, new { @class = "button" })          
 }
-
-<div>
-    @Html.ActionLink("Go Back", "List", "Project", new { projectId = Model.ProjectId }, new { @class = "button" })
-</div>
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval") 
@@ -215,7 +207,7 @@
             </div>
         </td>
         <td>
-            <button class="btnDelStep" type="button">X</button>
+           <a class="btnDelStep remove" title = "Remove Step"></a>
         </td>
     </tr>
 }
