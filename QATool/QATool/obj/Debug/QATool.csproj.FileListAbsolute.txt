@@ -102,3 +102,5 @@ C:\Users\jojo\Documents\GitHub\MVC4\QATool\QATool\obj\Debug\QATool.Migrations.co
 C:\Users\jojo\Documents\GitHub\MVC4\QATool\QATool\obj\Debug\QATool.csproj.GenerateResource.Cache
 C:\Users\jojo\Documents\GitHub\MVC4\QATool\QATool\obj\Debug\QATool.dll
 C:\Users\jojo\Documents\GitHub\MVC4\QATool\QATool\obj\Debug\QATool.pdb
+C:\Users\jojo\Documents\GitHub\MVC4\QATool\QATool\bin\Devtalk.EF.CodeFirst.dll
+C:\Users\jojo\Documents\GitHub\MVC4\QATool\QATool\bin\WebActivator.dll
