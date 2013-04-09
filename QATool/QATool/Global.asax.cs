@@ -18,6 +18,7 @@ namespace QATool
     {
         protected void Application_Start()
         {
+            System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<QATool.Models.QAToolDBContext>());
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

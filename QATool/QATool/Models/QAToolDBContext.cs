@@ -13,6 +13,7 @@ namespace QATool.Models
         // 
         // System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<QATool.Models.QAToolDBContext>());
 
+
         public QAToolDBContext() : base("name=QAToolDBContext")
         {
         }
